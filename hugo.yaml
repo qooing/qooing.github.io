@@ -4,6 +4,8 @@ theme: "PaperMod"
 languageCode: "ko-kr"
 defaultContentLanguage: "ko"
 
+enableRobotsTXT: true
+
 # 1. 검색 기능을 위한 설정 (Fuse.js)
 outputs:
   home:
