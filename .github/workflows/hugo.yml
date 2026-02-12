@@ -1,4 +1,7 @@
 name: Deploy to GitHub Pages
+env:
+  # GitHub Secrets에 저장한 값을 빌드 환경 변수로 주입
+  HUGO_GOOGLEANALYTICS: ${{ secrets.HUGO_GOOGLEANALYTICS }}
 
 on:
   push:
