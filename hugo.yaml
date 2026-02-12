@@ -1,5 +1,5 @@
-baseURL: "https://gurum.github.io/"
-title: "Gurum Tech Blog" # 블로그 이름 
+baseURL: "https://qooing.github.io/"
+title: "Qooing Tech Blog" # 블로그 이름 
 theme: "PaperMod"
 languageCode: "ko-kr"
 defaultContentLanguage: "ko"
@@ -23,8 +23,8 @@ params:
   # 2. 메인 화면 프로필 설정
   profileMode:
     enabled: true
-    title: "Gurum"
-    subtitle: "IT Tech Note"
+    title: "Qooing IT Tech Note"
+    subtitle: "Coding + Doing = Qooing"
     # imageUrl: "<이미지경로>" 
     # buttons:
     #   - name: Github
