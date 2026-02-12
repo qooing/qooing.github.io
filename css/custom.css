@@ -1,0 +1,12 @@
+/* 본문 폭 조절 */
+.post-content, .container { 
+    max-width: 900px !important; /* 원하는 수치로 변경 (보통 700~900px 사이) */
+    margin: 0 auto;
+}
+
+/* 줄간격 및 글자 크기 조절 */
+article p, .post-content p {
+    line-height: 1.8; /* 줄간격을 1.8배로 (보통 1.6~1.8이 읽기 편합니다) */
+    margin-bottom: 1.5rem; /* 문단 사이의 간격 */
+    font-size: 1.1rem; /* 글자 크기도 살짝 키우고 싶다면 추가 */
+}
