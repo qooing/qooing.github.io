@@ -1,6 +1,6 @@
 ---
 title: "[React 정복기 #01] 프론트엔드의 판도를 바꾼 React, 도대체 왜 쓰는 걸까요?"
-date: 2026-02-13T09:00:00+09:00
+date: 2026-02-12T09:00:00+09:00
 draft: false
 categories: ["React", "Frontend", "Web Development"]
 tags: ["React", "JavaScript", "Virtual DOM", "Component", "Declarative"]
