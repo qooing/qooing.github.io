@@ -2,8 +2,8 @@
 title: "[React 정복기 #01] 프론트엔드의 판도를 바꾼 React, 도대체 왜 쓰는 걸까요?"
 date: 2026-02-12T09:00:00+09:00
 draft: false
-categories: ["React", "Frontend", "Web Development"]
-tags: ["React", "JavaScript", "Virtual DOM", "Component", "Declarative"]
+categories: ["React Tutorial"]
+tags: ["React", "JavaScript", "Virtual DOM", "Component", "Declarative", "Frontend", "Web Development"]
 author: "Qooing"
 description: "React 시리즈의 첫 시작. 왜 React를 사용해야 하는지, 선언형 UI와 가상 DOM의 개념을 통해 알아봅니다."
 ---

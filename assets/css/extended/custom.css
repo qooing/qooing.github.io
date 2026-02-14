@@ -1,42 +1,71 @@
-/* 1. 글꼴 및 전체 레이아웃 */
+/* ============================================================
+   1. 외부 폰트 로드 및 전역 변수 설정
+   ============================================================ */
 @import url("https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css");
 
 :root {
-    /* 넓은 본문 폭 */
+    /* 레이아웃 폭 및 기본 폰트 */
     --main-width: 1000px; 
     --font-family: 'NanumSquare', sans-serif;
+    
+    /* 라이트모드 기본 색상 */
+    --content: #333333;
+    --primary: #111111;
+    --entry: #ffffff;
 }
 
-/* 2. 본문 텍스트 스타일 */
+/* ============================================================
+   2. 다크모드 전용 설정 (가독성 핵심)
+   ============================================================ */
+.dark {
+    /* 본문 글씨를 배경과 대비가 확실한 밝은 은회색으로 (#e4e4e7 추천) */
+    --content: #e4e4e7; 
+    
+    /* 제목 및 강조 텍스트는 완전한 흰색 */
+    --primary: #ffffff; 
+    
+    /* 배경색 및 카드 배경 조정 */
+    --theme: #1d1e20; 
+    --entry: #2e2e33;
+    --code-block-bg: #2e2e33;
+    
+    /* 테두리 색상 조정 */
+    --border: #3b3b3f;
+}
+
+/* ============================================================
+   3. 본문 텍스트 스타일 (Typography)
+   ============================================================ */
 .post-content {
-    /* 일반 웹보다 글씨가 큽니다 (약 17-18px) */
+    font-family: var(--font-family);
     font-size: 1.15rem; 
-    
-    /* 매우 넉넉한 줄간격 (편안함의 핵심) */
     line-height: 1.95; 
-    
-    /* 글자 사이 간격을 아주 살짝 좁혀 응집력을 높임 */
     letter-spacing: -0.01em; 
     
-    color: #333; /* 너무 검은색보다는 진한 회색이 눈이 편합니다 */
+    /* 변수를 사용하여 모드에 따라 색상이 자동 변경되도록 설정 */
+    color: var(--content);
 }
 
-/* 3. 문단 및 요소 간격 */
 .post-content p {
-    /* 문단 사이를 아주 널찍하게 띄워 시각적 피로도를 줄임 */
     margin-bottom: 32px; 
 }
 
-/* 소제목 디자인: 깔끔하게 */
+/* 소제목 디자인 */
 .post-content h1, .post-content h2, .post-content h3 {
     margin-top: 60px;
     margin-bottom: 24px;
     font-weight: 700;
     line-height: 1.4;
-    color: #111;
+    color: var(--primary); /* 다크모드 시 자동으로 밝아짐 */
 }
 
-/* 4. 코드 블록 및 인용구 (선택 사항) */
+/* 굵은 글씨 강조 */
+.post-content strong {
+    color: var(--primary);
+    font-weight: 800;
+}
+
+/* 인용구 스타일 */
 .post-content blockquote {
     border-left: 5px solid #e5e7eb;
     padding-left: 20px;
@@ -45,74 +74,92 @@
     margin: 40px 0;
 }
 
-/* 다크모드 대응 */
-.dark .post-content {
-    color: #e2e2e2;
+.dark .post-content blockquote {
+    border-left-color: #4b5563;
+    color: #ababab;
 }
 
-/* 상단 브레드크럼 글씨 크기 및 스타일 */
+/* ============================================================
+   4. 이미지 및 미디어 스타일 (강제 적용 버전)
+   ============================================================ */
+/* 일반 마크다운 이미지 및 Hugo Figure 태그 모두 대응 */
+.post-content img,
+.post-content figure {
+    display: block !important;
+    max-width: 70% !important; /* 강제로 70% 적용 */
+    width: auto !important;
+    height: auto !important;
+    margin: 40px auto !important; /* 중앙 정렬 강제 */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* 이미지 캡션(설명글)이 있다면 중앙 정렬 */
+.post-content figure figcaption {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: -30px;
+    margin-bottom: 40px;
+}
+
+/* 모바일 화면에서는 70%가 너무 작으므로 다시 넓혀줍니다 */
+@media screen and (max-width: 768px) {
+    .post-content img,
+    .post-content figure {
+        max-width: 95% !important;
+        margin: 20px auto !important;
+    }
+}
+/* ============================================================
+   5. 상단 정보 영역 (Breadcrumbs & Description)
+   ============================================================ */
+/* 브레드크럼 */
 .breadcrumbs {
-    font-size: 0.85rem;    /* 기본보다 작게 조정 (0.8~0.9rem 추천) */
-    margin-bottom: 20px;   /* 본문 제목과의 간격 */
-    color: #777;           /* 너무 진하지 않은 회색으로 시선 분산 방지 */
-    font-weight: 400;      /* 가벼운 굵기 */
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+    color: #777;
 }
 
-/* 브레드크럼 내부 링크에 마우스를 올렸을 때 */
+.dark .breadcrumbs {
+    color: #ababab;
+}
+
+.breadcrumbs a {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
 .breadcrumbs a:hover {
-    color: var(--theme);   /* 포인트 컬러로 부드럽게 강조 */
-    text-decoration: underline;
-}
-
-/* 브레드크럼 사이의 구분자( / ) 간격 조정 */
-.breadcrumbs span {
-    margin: 0 5px;
+    color: inherit !important;
     opacity: 0.6;
 }
 
-/* 브레드크럼 링크의 기본 상태와 Hover 상태를 확실히 정의 */
-.breadcrumbs a {
-    color: inherit; /* 부모 요소의 색상을 따라가도록 (보통 회색) */
-    transition: opacity 0.2s ease; /* 부드럽게 변하도록 애니메이션 추가 */
-    text-decoration: none;
-}
-
-/* 마우스를 올렸을 때 (흰색으로 변하는 문제 해결) */
-.breadcrumbs a:hover {
-    color: inherit !important; /* 색상이 변하지 않도록 강제 고정 */
-    opacity: 0.6;              /* 글씨를 살짝 투명하게 만들어 '연해지는' 효과 부여 */
-    text-decoration: none;     /* 밑줄이 생기는 게 싫다면 none, 원하시면 underline */
-}
-
-/* 포스팅 상단 요약(Description) 영역 */
+/* 포스팅 요약(Description) */
 .post-description {
-    font-size: 0.95rem;     /* 본문보다 작게 설정 (기본은 보통 1.1rem 이상) */
-    font-style: italic;     /* 이탤릭체 적용 */
-    color: #666;            /* 본문보다 약간 흐린 회색으로 조정 */
-    line-height: 1.6;       /* 요약문은 줄간격을 본문보다 살짝 좁게 하여 밀도감 부여 */
-    margin-top: 10px;       /* 제목과의 간격 */
-    margin-bottom: 30px;    /* 본문 시작 전의 여백 */
+    font-size: 0.95rem;
+    font-style: italic;
+    color: #666;
+    line-height: 1.6;
+    margin-top: 10px;
+    margin-bottom: 30px;
 }
 
-/* 다크모드에서의 색상 대응 */
 .dark .post-description {
     color: #ababab;
 }
 
-/* 본문 내 이미지 스타일 */
-.post-content img {
-    display: block;        /* 중앙 정렬을 위해 블록 요소로 변경 */
-    max-width: 70%;       /* 전체 폭의 70%만 차지 */
-    height: auto;          /* 가로세로 비율 유지 */
-    margin: 40px auto;    /* 상하 간격은 40px, 좌우는 auto로 중앙 정렬 */
-    border-radius: 8px;   /* 살짝 둥근 모서리로 삭막함 제거 */
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* 은은한 그림자로 입체감 부여 */
+/* ============================================================
+   6. 기타 UI 개선
+   ============================================================ */
+/* 본문 내 링크 색상 */
+.post-content a {
+    color: #3b82f6;
+    text-decoration: underline;
+    text-underline-offset: 4px;
 }
 
-/* 모바일 화면에서는 이미지가 너무 작아지지 않도록 90%~100%로 조정 */
-@media screen and (max-width: 768px) {
-    .post-content img {
-        max-width: 95%;
-        margin: 20px auto;
-    }
+.dark .post-content a {
+    color: #60a5fa;
 }

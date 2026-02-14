@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>React Tutorial on Qooing Tech Blog</title>
-    <link>http://localhost:1313/posts/react/</link>
+    <link>http://localhost:1313/categories/react-tutorial/</link>
     <description>Recent content in React Tutorial on Qooing Tech Blog</description>
     <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
     <lastBuildDate>Fri, 13 Feb 2026 09:00:00 +0900</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/react/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/categories/react-tutorial/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[React 정복기 #02] 5분 완성! Vite로 가장 빠른 리액트 개발 환경 구축하기</title>
       <link>http://localhost:1313/posts/react/react-tutorial-02/</link>
